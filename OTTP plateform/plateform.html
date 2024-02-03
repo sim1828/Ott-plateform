@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Owl Carousel CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+      <!-- Animate.css -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+      <!-- fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+      <style>
+
+        *{
+            margin:0px;
+            padding:0px;
+            box-sizing: border-box
+            ;
+            font-family: "Protest Riot", sans-serif;
+           font-weight: 400;
+            font-style: normal;
+           text-decoration: none;
+            list-style: none;
+        }
+           a{
+            text-decoration: none;
+           }
+        body {
+            /* background: #000000; */
+            font-family: sans-serif;
+            color: #ffffff;
+            user-select: none;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color:black;
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        #banner{
+            width:100%;
+            height:100vh;
+            padding: 10px;
+            position: relative;
+            /* margin-top:20px; */
+        }
+
+        .card-description {
+            position: absolute;
+            margin: auto;
+            width:80%;
+            height:70%;
+            inset: 10% 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
+            /* color: #000; Changed color to black for better visibility */
+        }
+ 
+        .gallery img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .gallery-container {
+            margin-top: 30px;
+            position: relative;
+        }
+        /* Custom CSS for Owl Carousel navigation arrows */
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+        }
+        .owl-prev,
+        .owl-next {
+            font-size: 2rem;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* CSS for image zoom effect */
+        .item {
+            position: relative;
+        }
+        .item img {
+            max-width: 100%; /* Adjust image width to fit container */
+            max-height: 400px; /* Set maximum height for images */
+            object-fit: cover; /* Ensure images cover their containers */
+            animation-duration: 1s; /* Set animation duration */
+            cursor: pointer; /* Change cursor to pointer when hovering over the image */
+        }
+        .free-tag {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgb(62, 65, 228);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .wishlist-tag {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgb(228, 65, 62);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        /* CSS for the responsive search bar */
+@media (max-width: 991.98px) {
+    form.d-lg-none {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        width: 90%;
+        margin-top: 10px;
+        animation: fadeInDown 0.5s ease;
+    }
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* CSS for the search bar for larger screens */
+@media (min-width: 992px) {
+    form.d-none.d-lg-block {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        width: 40%;
+        margin-top: 10px;
+        animation: fadeInDown 0.5s ease;
+    }
+}
+.logo{
+    height: 50px;
+    width: 70px;
+}
+.slides{
+    height:70px;
+}
+.footer a {
+           color:white;
+}
+h2{
+    color: #9ece5e;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <!-- Replace the text-based link with an image-based one -->
+            <a class="navbar-brand" href="#" style="font-size: x-large; font-family:cursive;">
+                <img src="img/logo.png" class="logo" alt="K-Dramma Star Logo" width="100" height="auto">K-Drama Star
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-film"></i> Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-tv"></i> TV Shows</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-list"></i> My List</a>
+                    </li>
+                </ul>
+                
+                <!-- Responsive Search Bar with Animation -->
+                <form class="d-lg-none my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+            <!-- Search Bar with Animation for Larger Screens -->
+            <form class="d-none d-lg-block">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for movies, TV shows, etc." aria-label="Search" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+    
+   <section id="banner">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/kd-banner1.jpg" class="d-block w-100 img-fluid" alt="...">
+                <div class="card-description">
+                    <h1>Watch</h1>
+                    <p>Your favourite K-Dramma</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/kd-banner2.jpg" class="d-block w-100" alt="...">
+                <div class="card-description">
+                    <h1>Watch</h1>
+                    <p>Your favourite K-Dramma</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/kd-banner3.jpg" class="d-block w-100 img-fluid" alt="...">
+                <div class="card-description">
+                    <h1>Watch</h1>
+                    <p>Your favourite K-Dramma</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/kd-banner1.jpg" class="d-block w-100" alt="...">
+                <div class="card-description">
+                    <h1>Watch</h1>
+                    <p>Your favourite K-Dramma</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> 
+   </section>
+    <div class="container">
+        <!-- First Image Gallery Container -->
+        <div class="gallery-container">
+            <h2 class="text-dark text-center p-3">Most Watched Drama</h2>
+            <div class="owl-carousel owl-theme gallery-carousel">
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k1.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k3.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+                <!-- Add more images as needed -->
+            </div>
+            <div class="owl-nav">
+                <button class="owl-prev">Prev</button>
+                <button class="owl-next">Next</button>
+            </div>
+        </div>
+
+        <!-- Second Image Gallery Container -->
+        <div class="gallery-container">
+            <h2 class="text-dark text-center p-3">Upcoming Drama</h2>
+            <div class="owl-carousel owl-theme gallery-carousel">
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k4.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k5.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+                <!-- Add more images as needed -->
+            </div>
+            <div class="owl-nav">
+                <button class="owl-prev">Prev</button>
+                <button class="owl-next">Next</button>
+            </div>
+        </div>
+        <div class="gallery-container">
+            <h2 class="text-dark text-center p-3">New Drama</h2>
+            <div class="owl-carousel owl-theme gallery-carousel">
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k4.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k3.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+                <!-- Add more images as needed -->
+            </div>
+            <div class="owl-nav">
+                <button class="owl-prev">Prev</button>
+                <button class="owl-next">Next</button>
+            </div>
+        </div>
+        <div class="gallery-container">
+            <h2 class="text-dark text-center p-3">love story</h2>
+            <div class="owl-carousel owl-theme gallery-carousel">
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k5.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+                <div class="item animate__animated animate__fadeIn">
+                    <img src="img/k1.jpg" alt="Image 1">
+                    <span class="free-tag">Free</span>
+                    <span class="wishlist-tag">Wishlist</span>
+                </div>
+                <!-- Add more images as needed -->
+            </div>
+            <div class="owl-nav">
+                <button class="owl-prev">Prev</button>
+                <button class="owl-next">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer mt-5 py-3 bg-dark text-white">
+        <div class="container text-center">
+            <span class="text-muted">Your OTT Platform &copy; 2024</span>
+            <ul class=" d-flex justify-content-evenly">
+                <li class=""><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li class=""><a href="#"><i class="fas fa-film"></i> Movies</a></li>
+                <li class=""><a href="#"><i class="fas fa-tv"></i> TV Shows</a></li>
+                <li class=""><a href="#"><i class="fas fa-list"></i> My List</a></li>
+                <li class=""><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                <li class=""><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                <li class=""><a href="#"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+
+    <!-- Bootstrap Bundle with Popper -->
+   <!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Initialize Owl Carousel for each gallery
+        $('.gallery-carousel').each(function() {
+            var $carousel = $(this);
+            $carousel.owlCarousel({
+                loop:true,
+                margin:10,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:3
+                    },
+                    1000:{
+                        items:4
+                    }
+                }
+            });
+
+            // Custom navigation events
+            $carousel.parent().find('.owl-prev').click(function() {
+                $carousel.trigger('prev.owl.carousel');
+            });
+            $carousel.parent().find('.owl-next').click(function() {
+                $carousel.trigger('next.owl.carousel');
+            });
+        });
+
+        // Add click event to images for animation
+        $('.item img').click(function() {
+            $(this).toggleClass('animate__animated animate__pulse');
+        });
+    });
+</script>
+
+
+</body>
+</html>
